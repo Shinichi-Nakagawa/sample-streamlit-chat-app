@@ -1,5 +1,4 @@
 import streamlit as st
-import random
 import time
 
 st.title("阪神タイガース優勝をドヤるChat App")
@@ -13,6 +12,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+prompt: str = ""
 # Accept user input
 if prompt := st.chat_input("阪神タイガースについて何でも聞いてみて"):
     # Add user message to chat history
@@ -25,14 +25,16 @@ if prompt := st.chat_input("阪神タイガースについて何でも聞いて�
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        assistant_response = random.choice(
-            [
-                "そら（誰よりもお散歩しているから）、そうよ。",
-                "そら（他のチームの散歩を止めてるから）、そうよ。",
-                "知らんがな",
-                "なんでや！！！阪神！！！関係あるやろ！！！！",
-            ]
-        )
+        assistant_response = ""
+        if prompt.startswith("阪神優勝"):
+            assistant_response = "優勝したがな"
+        elif prompt.startswith("どうやって"):
+            assistant_response = "データ見たらわかるがな"
+        elif prompt.startswith("ほんまか"):
+            assistant_response = "しゃーない, データ見てみようか"
+        else:
+            assistant_response = "阪神関係ないがな"
+
         # Simulate stream of response with milliseconds delay
         for chunk in assistant_response.split():
             full_response += chunk + " "
