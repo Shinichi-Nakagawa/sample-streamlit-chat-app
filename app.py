@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 
-st.title("阪神タイガース優勝をドヤるChat App")
+st.title("[sample]阪神タイガースChat")
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -15,9 +15,7 @@ for message in st.session_state.messages:
 prompt: str = ""
 # Accept user input
 if prompt := st.chat_input("阪神タイガースについて何でも聞いてみて"):
-    # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
-    # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
 
@@ -26,7 +24,7 @@ if prompt := st.chat_input("阪神タイガースについて何でも聞いて�
         message_placeholder = st.empty()
         full_response = ""
         assistant_response = ""
-        if prompt.startswith("阪神優勝"):
+        if prompt.startswith("阪神"):
             assistant_response = "優勝したがな"
         elif prompt.startswith("どうやって"):
             assistant_response = "データ見たらわかるがな"
@@ -35,12 +33,9 @@ if prompt := st.chat_input("阪神タイガースについて何でも聞いて�
         else:
             assistant_response = "阪神関係ないがな"
 
-        # Simulate stream of response with milliseconds delay
         for chunk in assistant_response.split():
             full_response += chunk + " "
             time.sleep(0.05)
-            # Add a blinking cursor to simulate typing
             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
-    # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": full_response})
