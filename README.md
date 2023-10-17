@@ -41,12 +41,13 @@ $ gcloud artifacts repositories create sample-streamlit-chat \
 ### Build & Deploy
 
 ```bash
-$
+$  sh ./cloudrun.sh ${your google cloud project id} ${docker image tag}
 ```
 
 ## Use
 
-Open to http://localhost:8501/
+- default: http://localhost:8501/
+- docker: http://${your host}:8000/
 
 ## Demo
 
