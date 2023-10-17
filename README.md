@@ -24,6 +24,26 @@ $ streamlit run app.py
 $ docker compose up
 ```
 
+## Build & Deploy for Cloud Run
+
+### Create Repository(1st time only)
+
+```bash
+$ gcloud artifacts repositories create sample-streamlit-chat \
+    --repository-format=docker \
+    --location=asia-northeast1 \
+    --description="streamlit app sample" \
+    --kms-key=KMS-KEY \
+    --immutable-tags \
+    --async
+```
+
+### Build & Deploy
+
+```bash
+$
+```
+
 ## Use
 
 Open to http://localhost:8501/
