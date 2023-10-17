@@ -12,8 +12,16 @@ $ poetry install
 
 ## Run
 
+### local
+
 ```bash
 $ streamlit run app.py
+```
+
+### Docker
+
+```bash
+$ docker compose up
 ```
 
 ## Use
