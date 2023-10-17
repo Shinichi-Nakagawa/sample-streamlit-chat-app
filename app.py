@@ -78,7 +78,7 @@ if prompt := st.chat_input("阪神タイガースは今年優勝しましたか?
         else:
             assistant_response = "なんでや！阪神！！関係ないやろ！！！"
 
-        for chunk in assistant_response.split():
+        for chunk in list(assistant_response):
             full_response += chunk + " "
             time.sleep(0.05)
             message_placeholder.markdown(full_response + "▌")

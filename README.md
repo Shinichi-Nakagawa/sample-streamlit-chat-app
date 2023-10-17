@@ -12,13 +12,42 @@ $ poetry install
 
 ## Run
 
+### local
+
 ```bash
 $ streamlit run app.py
 ```
 
+### Docker
+
+```bash
+$ docker compose up
+```
+
+## Build & Deploy for Cloud Run
+
+### Create Repository(1st time only)
+
+```bash
+$ gcloud artifacts repositories create sample-streamlit-chat \
+    --repository-format=docker \
+    --location=asia-northeast1 \
+    --description="streamlit app sample" \
+    --kms-key=KMS-KEY \
+    --immutable-tags \
+    --async
+```
+
+### Build & Deploy
+
+```bash
+$  sh ./cloudrun.sh ${your google cloud project id} ${docker image tag}
+```
+
 ## Use
 
-Open to http://localhost:8501/
+- default: http://localhost:8501/
+- docker: http://${your host}:8000/
 
 ## Demo
 
